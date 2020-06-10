@@ -85,22 +85,31 @@ html .panel .bottom {
 
 html .settings {
   margin-top: 8rem;
+  margin-bottom: 2rem;
+}
+
+html .settings h3 {
+  margin-bottom: 2rem;
 }
 
 html .select-players {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-left: 0 2rem;
 }
 
 html .select-players figcaption {
+  margin-top: 0.33333rem;
   font-family: 'Roboto Mono', monospace;
+  font-size: 100%;
   color: #6c757d;
+  letter-spacing: 0.5px;
 }
 
 html .select-players .img-player {
-  height: 5em;
-  width: 5em;
+  width: 60%;
+  height: auto;
   border-radius: 50%;
   padding: 2px;
 }

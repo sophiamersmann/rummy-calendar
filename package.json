@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch assets/style/scss -o assets/style/css"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sophiamersmann/rummy-calendar/issues"
   },
-  "homepage": "https://github.com/sophiamersmann/rummy-calendar#readme"
+  "homepage": "https://github.com/sophiamersmann/rummy-calendar#readme",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
 }

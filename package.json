@@ -18,5 +18,8 @@
   },
   "homepage": "https://github.com/sophiamersmann/rummy-calendar#readme",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "http-server": "^0.12.3",
+    "node-sass": "^4.14.1"
+  }
 }

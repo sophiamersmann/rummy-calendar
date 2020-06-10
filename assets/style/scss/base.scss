@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap'); // TODO: Use this
-
 @import 'global';
+@import 'typo';
 
 html {
   @extend %full-height;
@@ -45,6 +44,10 @@ html {
 
     .bottom {
       margin-bottom: $spacing / 2;
+    }
+
+    @include max-width($extra-small) {
+
     }
   }
 

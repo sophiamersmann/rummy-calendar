@@ -20,6 +20,25 @@ html {
     @extend %full-height;
     display: flex;
     flex-direction: row;
+    @include extra-small-display(block);
+  }
+
+  .alert {
+    display: none;
+    border: 2px solid $blue;
+    border-radius: 10px;
+    background-color: $light-blue;
+    font-size: 1.4em;
+    padding: $spacing / 2;
+    margin: $spacing 0;
+    @include extra-small-display(block);
+  }
+
+  .main {
+    flex: 4 1 75%;
+    @include max-width($small) {
+      flex-basis: 65%;
+    }
   }
 
   .panel {
@@ -28,7 +47,7 @@ html {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing * 2 $spacing 0;
+    padding: $spacing * 2 $spacing $spacing / 2;
     background-color: whitesmoke;
     box-shadow: 2px 2px 5px lightgray;
     text-align: center;
@@ -37,13 +56,20 @@ html {
       margin-top: $spacing / 2;
 
       &:first-of-type {
-        font-size: 1.3em;
+        font-size: 1.4em;
         color: $gray;
       }
     }
 
     .bottom {
       margin-bottom: $spacing / 2;
+      @include extra-small-display(none);
+    }
+    @include max-width($small) {
+      flex-basis: 35%;
+    }
+    @include extra-small-display(block) {
+      padding-top: $spacing;
     }
   }
 
@@ -53,6 +79,11 @@ html {
 
     h3 {
       margin-bottom: $spacing;
+    }
+    @include extra-small-display(none);
+
+    &+p {
+      @include extra-small-display(none);
     }
   }
 
@@ -68,6 +99,10 @@ html {
       font-size: 100%;
       color: $gray;
       letter-spacing: 0.5px;
+      @include max-width($small) {
+        font-size: 80%;
+        letter-spacing: normal;
+      }
     }
 
     .img-player {
@@ -75,6 +110,9 @@ html {
       height: auto;
       border-radius: 50%;
       padding: 2px;
+      @include max-width($small) {
+        width: 80%;
+      }
 
       &.active {
         box-shadow: 0 0 0 0.2rem;
@@ -94,10 +132,6 @@ html {
     }
   }
 
-  .main {
-    flex: 4 1 75%;
-  }
-
   h1,
   h2,
   h3 {
@@ -114,10 +148,6 @@ html {
 
   h3 {
     font-size: 1.4em;
-  }
-
-  p {
-    font-size: 1.2em;
   }
 
   a:not([class]) {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Sophia Mersmann">
+  <title>Rummy Calendar</title>
+  <link rel="stylesheet" href="assets/style/css/base.css">
+</head>
+
+<body>
+  <div class="panel">
+    <div class="top">
+      <h1>Rummy @ Home</h1>
+      <p>Of weeks and months when all we had was playing cards</p>
+      <div class="settings">
+        <h3>SELECT PLAYERS</h3>
+        <div class="select-players">
+          <div>
+            <figure>
+              <img id="player-sophia" class="img-player active" data-player="sophia" width="320"
+                   height="320" src="assets/img/memoji-sophia-320x320.png">
+              <figcaption>SOPHIA</figcaption>
+            </figure>
+          </div>
+          <div>
+            <figure>
+              <img id="player-clara" class="img-player active" data-player="clara" width="320"
+                   height="320" src="assets/img/memoji-clara-320x320.png">
+              <figcaption>CLARA</figcaption>
+            </figure>
+          </div>
+          <div>
+            <figure>
+              <img id="player-marina" class="img-player" data-player="marina" width="320"
+                   height="320" src="assets/img/memoji-marina-320x320.png">
+              <figcaption>MARINA</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <p>
+        Colours indicate the <b>winner</b> on each day, week, month, or overall.
+        Hover over cells to explore <b>cumulative scores</b>.
+      </p>
+    </div>
+    <div class="bottom">
+      Code builds on <a href="https://observablehq.com/@d3/calendar-view" target="_blank">Calendar
+        View</a> from Mike Bostock
+    </div>
+  </div>
+
+  <div class="main">
+    <div id="chart-container"></div>
+  </div>
+
+</body>
+
+</html>

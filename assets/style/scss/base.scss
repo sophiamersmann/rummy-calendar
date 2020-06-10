@@ -1,0 +1,68 @@
+@import 'global';
+
+html {
+  @extend %full-height;
+  box-sizing: border-box;
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @extend %full-height;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .panel {
+    flex: 1 4 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing * 2 $spacing 0;
+
+    .top > p {
+      margin-top: $spacing / 2;
+    }
+
+    .bottom {
+      margin-bottom: $spacing / 2;
+    }
+  }
+
+  .settings {
+    margin-top: $spacing * 4;
+  }
+
+  .select-players {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .img-player {
+      height: 4em;
+      width: 4em;
+    }
+
+    #player-sophia {
+      color: $color-sophia;
+    }
+
+    #player-clara {
+      color: $color-clara;
+    }
+
+    #player-marina {
+      color: $color-marina;
+    }
+  }
+
+  .main {
+    flex: 4 1 75%;
+  }
+}

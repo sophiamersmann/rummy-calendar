@@ -1,0 +1,26 @@
+$spacing: 2rem;
+
+%full-height {
+  height: 100%;
+}
+
+// Colours
+$black: #160F29;
+$gray: #6c757d;
+$blue: #336699;
+$light-blue: #bedcee;
+$color-sophia: gold;
+$color-clara: #ff9f1c;
+$color-marina: #f25f5c;
+
+// Breakpoints
+$extra-small: 575.98px;
+$small: 767.98px;
+$medium: 991.98px;
+$large: 1199.98px;
+
+@mixin max-width($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}

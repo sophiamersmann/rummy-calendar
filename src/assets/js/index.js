@@ -1,24 +1,20 @@
-import RommeCal from './modules/chart.js';
+import RommeCal from './modules/chart';
 
-$(document).ready(function() {
-  "use strict";
+function getCurrentPlayers() {
+  return $('.img-player.active')
+    .map((index, element) => $(element).data('player'))
+    .get();
+}
 
+$(document).ready(() => {
   // draw chart
   RommeCal.init('#chart-container');
 
   // update chart when player selection is updated
-  $('.img-player').on('click', function() {
-    $(this).toggleClass('active');
+  $('.img-player').on('click', (event) => {
+    $(event.currentTarget).toggleClass('active');
 
     const players = getCurrentPlayers();
     RommeCal.updatePlayers(players);
   });
 });
-
-function getCurrentPlayers() {
-  return $('.img-player.active')
-    .map(function() {
-      return $(this).data('player');
-    })
-    .get();
-}

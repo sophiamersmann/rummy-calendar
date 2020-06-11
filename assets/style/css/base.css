@@ -97,11 +97,9 @@ html {
       html .panel .top > p:first-of-type {
         font-size: 1.4em;
         color: #6c757d; }
-    html .panel .bottom {
-      margin-bottom: 1rem; }
-      @media screen and (max-width: 575.98px) {
-        html .panel .bottom {
-          display: none; } }
+    @media screen and (max-width: 575.98px) {
+      html .panel .bottom {
+        display: none; } }
     @media screen and (max-width: 767.98px) {
       html .panel {
         flex-basis: 35%; } }

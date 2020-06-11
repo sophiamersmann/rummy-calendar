@@ -1,8 +1,17 @@
 "use strict";
 
+import * as d3 from 'd3';
+import {
+  rollups,
+  maxIndex,
+  cumsum
+} from 'd3-array';
+// import * as d3Tip from 'd3-tip';
+// d3.tip = d3Tip;
+
 const RommeCal = {
   svg: {
-    selector: null,  // defined by user
+    selector: null, // defined by user
     width: 750,
     height: 500
   },
@@ -115,7 +124,7 @@ RommeCal.grid.months = d3.utcMonths(
   d3.timeMonth(RommeCal.grid.endDate));
 RommeCal.grid.years = [d3.utcYear(RommeCal.grid.startDate)];
 
-RommeCal.updatePlayers = function (newPlayers) {
+RommeCal.updatePlayers = function(newPlayers) {
   this.active.players = newPlayers;
 
   // update data
@@ -141,7 +150,7 @@ RommeCal.updatePlayers = function (newPlayers) {
   }
 };
 
-RommeCal.updateTipData = function () {
+RommeCal.updateTipData = function() {
   const type = this.active.tip.type,
     date = this.active.tip.date;
 
@@ -174,11 +183,11 @@ RommeCal.updateTipData = function () {
   }
 };
 
-RommeCal.clearTipData = function () {
+RommeCal.clearTipData = function() {
   Object.keys(this.active.tip).forEach(k => this.active.tip[k] = null);
 };
 
-RommeCal.setUpSVG = function () {
+RommeCal.setUpSVG = function() {
   this.svg.g = d3.select(this.svg.selector)
     .append('svg')
     .attr('class', 'svg-content')
@@ -188,7 +197,7 @@ RommeCal.setUpSVG = function () {
     .attr('transform', `translate(${this.margin.left},${this.margin.top})`);
 };
 
-RommeCal.drawGrid = function () {
+RommeCal.drawGrid = function() {
   const cell = this.grid.cell;
   const x = date => d3.utcMonday.count(this.grid.startDate, date) * cell.size;
 
@@ -228,7 +237,7 @@ RommeCal.drawGrid = function () {
     .attr('x', x)
     .attr('y', 9 * cell.size);
 
-  this.getNumCells = function () {
+  this.getNumCells = function() {
     const n = 7;
     const d = Math.max(0, Math.min(n, countDay(this.grid.endDate)));
     const w = d3.utcMonday.count(this.grid.startDate, this.grid.endDate);
@@ -255,8 +264,8 @@ RommeCal.drawGrid = function () {
   this.grid.drawn = true;
 };
 
-RommeCal.drawMonthLines = function () {
-  this.pathMonth = function (t) {
+RommeCal.drawMonthLines = function() {
+  this.pathMonth = function(t) {
     const n = 7;
     const d = Math.max(0, Math.min(n, countDay(t)));
     const w = d3.utcMonday.count(this.grid.startDate, t);
@@ -279,8 +288,8 @@ RommeCal.drawMonthLines = function () {
     .attr('d', d => this.pathMonth(d));
 };
 
-RommeCal.drawLabels = function () {
-  this.drawYear = function () {
+RommeCal.drawLabels = function() {
+  this.drawYear = function() {
     this.svg.g.append('text')
       .attr('class', 'label label-year')
       .attr('x', this.labels.xOffset)
@@ -290,7 +299,7 @@ RommeCal.drawLabels = function () {
       .text('2020');
   };
 
-  this.drawDays = function () {
+  this.drawDays = function() {
     this.svg.g.append('g')
       .attr('text-anchor', 'end')
       .selectAll('.label-day')
@@ -303,7 +312,7 @@ RommeCal.drawLabels = function () {
       .text(d => this.labels.dayNames[d.getUTCDay()]);
   };
 
-  this.drawMonths = function () {
+  this.drawMonths = function() {
     this.svg.g.append('g')
       .selectAll('.label-month')
       .data(d3.utcMonths(d3.utcMonth(this.grid.startDate), d3.utcMonth(this.grid.endDate)))
@@ -315,18 +324,18 @@ RommeCal.drawLabels = function () {
       .text(d3.utcFormat('%b'));
   };
 
-  this.drawLeftLabels = function () {
+  this.drawLeftLabels = function() {
     this.svg.g.selectAll('.label-left')
       .data([{
         text: 'Week',
         y: 8
-    }, {
+      }, {
         text: 'Month',
         y: 9.5
-    }, {
+      }, {
         text: 'All',
         y: 11
-    }])
+      }])
       .join('text')
       .attr('class', 'label label-left')
       .attr('x', this.labels.xOffset)
@@ -342,7 +351,7 @@ RommeCal.drawLabels = function () {
   this.drawLeftLabels();
 };
 
-RommeCal.colorGrid = function (transition = true) {
+RommeCal.colorGrid = function(transition = true) {
   const cell = this.grid.cell;
   let cells = this.svg.g.selectAll('rect');
 
@@ -364,7 +373,7 @@ RommeCal.colorGrid = function (transition = true) {
   });
 };
 
-RommeCal.gridInteract = function () {
+RommeCal.gridInteract = function() {
   const cell = this.grid.cell;
   const formatDate = this.time.formatDate;
 
@@ -421,7 +430,7 @@ RommeCal.gridInteract = function () {
     });
 };
 
-RommeCal.drawChartInTip = function () {
+RommeCal.drawChartInTip = function() {
   const cfg = this.chartInTip;
   const scores = deepcopy(this.active.tip.scores);
 
@@ -438,7 +447,7 @@ RommeCal.drawChartInTip = function () {
   const players = scores.map(d => d.player);
   const cumsumScores = scores.map(d => {
     d.scores.unshift(0);
-    return d3.cumsum(d.scores);
+    return cumsum(d.scores);
   });
 
   const minScore = d3.min(cumsumScores.map(d => d3.min(d)));
@@ -524,11 +533,11 @@ RommeCal.drawChartInTip = function () {
     .text(d => d.score);
 };
 
-RommeCal.clearChartInTip = function () {
+RommeCal.clearChartInTip = function() {
   d3.select(this.chartInTip.selector).selectAll('*').remove();
 };
 
-RommeCal.draw = function () {
+RommeCal.draw = function() {
   this.setUpSVG();
 
   this.drawGrid();
@@ -539,7 +548,7 @@ RommeCal.draw = function () {
   this.drawLabels();
 };
 
-RommeCal.prepareData = function (data) {
+RommeCal.prepareData = function(data) {
   this.data.raw = data;
 
   this.data.scores = fold(this.data.raw);
@@ -566,15 +575,15 @@ RommeCal.prepareData = function (data) {
   this.updatePlayers(this.players.init);
 };
 
-RommeCal.init = function (selector) {
+RommeCal.init = function(selector) {
   this.svg.selector = selector;
 
   const filename = d3.select(selector).attr('data-src');
-  d3.csv(filename, loadDatum).then(function (data) {
+  d3.csv(filename, loadDatum).then(function(data) {
       RommeCal.prepareData(data);
       RommeCal.draw();
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log("failure", error);
     });
 };
@@ -587,16 +596,16 @@ function loadDatum(d) {
       scores: [{
           player: 'sophia',
           count: d.Sophia === '' ? null : +d.Sophia
-      },
+        },
         {
           player: 'clara',
           count: d.Clara === '' ? null : +d.Clara
-      },
+        },
         {
           player: 'marina',
           count: d.Marina === '' ? null : +d.Marina
-      }
-    ]
+        }
+      ]
     };
   }
 }
@@ -622,11 +631,11 @@ function countNumCells(date) {
 }
 
 function getWinner(scores) {
-  return scores[d3.maxIndex(scores, d => d3.sum(d.scores))].player;
+  return scores[maxIndex(scores, d => d3.sum(d.scores))].player;
 }
 
 function fold(data) {
-  return d3.rollups(
+  return rollups(
     data.map(d => d.scores).flat(),
     v => v.map(d => d.count),
     d => d.player

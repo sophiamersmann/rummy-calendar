@@ -1,4 +1,4 @@
-# Rummy @ Home
+# Rummy Calendar
 
 ## Build 
 

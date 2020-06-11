@@ -52,7 +52,7 @@ html {
   html body {
     display: flex;
     flex-direction: row; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html body {
         display: block; } }
   html .alert {
@@ -63,7 +63,7 @@ html {
     font-size: 1.4em;
     padding: 1rem;
     margin: 2rem 0; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html .alert {
         display: block; } }
   html .main {
@@ -86,13 +86,13 @@ html {
       html .panel .top > p:first-of-type {
         font-size: 1.4em;
         color: #6c757d; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html .panel .bottom {
         display: none; } }
     @media screen and (max-width: 767.98px) {
       html .panel {
         flex-basis: 35%; } }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html .panel {
         display: block;
         padding-top: 2rem; } }
@@ -101,10 +101,10 @@ html {
     margin-bottom: 2rem; }
     html .settings h3 {
       margin-bottom: 2rem; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html .settings {
         display: none; } }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 575.98px) {
       html .settings + p {
         display: none; } }
   html .select-players {

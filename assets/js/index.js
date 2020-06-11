@@ -1,4 +1,4 @@
-import RommeCal from './assets/modules/chart.js';
+import RommeCal from './modules/chart.js';
 
 $(document).ready(function() {
   "use strict";

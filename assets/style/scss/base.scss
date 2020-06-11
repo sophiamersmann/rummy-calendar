@@ -39,6 +39,26 @@ html {
     @include max-width($small) {
       flex-basis: 65%;
     }
+
+    #chart-container {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      margin: $spacing * 4;
+      @include max-width($small) {
+        margin: $spacing * 2;
+      }
+      @include max-width($extra-small) {
+        margin: $spacing / 2;
+      }
+
+      svg {
+        display: block;
+        height: 95%;
+        margin: 0 auto;
+        width: 95%;
+      }
+    }
   }
 
   .panel {
@@ -115,7 +135,7 @@ html {
       }
 
       &.active {
-        box-shadow: 0 0 0 0.2rem;
+        box-shadow: 0 0 0 0.25em;
       }
     }
 

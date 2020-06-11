@@ -66,6 +66,22 @@ html {
     @media screen and (max-width: 767.98px) {
       html .main {
         flex-basis: 65%; } }
+    html .main #chart-container {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      margin: 8rem; }
+      @media screen and (max-width: 767.98px) {
+        html .main #chart-container {
+          margin: 4rem; } }
+      @media screen and (max-width: 575.98px) {
+        html .main #chart-container {
+          margin: 1rem; } }
+      html .main #chart-container svg {
+        display: block;
+        height: 95%;
+        margin: 0 auto;
+        width: 95%; }
   html .panel {
     flex: 1 4 25%;
     display: flex;
@@ -128,7 +144,7 @@ html {
         html .select-players .img-player {
           width: 80%; } }
       html .select-players .img-player.active {
-        box-shadow: 0 0 0 0.2rem; }
+        box-shadow: 0 0 0 0.25em; }
     html .select-players #player-sophia {
       color: gold; }
     html .select-players #player-clara {

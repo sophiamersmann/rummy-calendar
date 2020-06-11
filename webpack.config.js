@@ -1,9 +1,9 @@
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/assets/js/app.js',
   output: {
     path: `${__dirname}/dist`,
-    filename: 'bundle.js',
+    filename: 'bundle.min.js',
   },
   module: {
     rules: [{

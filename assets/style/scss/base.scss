@@ -41,30 +41,6 @@ html {
     }
   }
 
-  #chart-container {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    margin: $spacing * 4;
-    @include max-width($small) {
-      margin: $spacing * 2;
-    }
-    @include max-width($extra-small) {
-      margin: $spacing / 2;
-    }
-
-    svg {
-      display: block;
-      width: 95%;
-      height: 95%;
-      margin: 0 auto;
-
-      .label {
-        font-family: 'Roboto Mono', monospace;
-      }
-    }
-  }
-
   .panel {
     flex: 1 4 25%;
     display: flex;

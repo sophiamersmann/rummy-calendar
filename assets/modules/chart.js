@@ -2,7 +2,7 @@
 
 const RommeCal = {
   svg: {
-    selector: '#chart-container',
+    selector: null,  // defined by user
     width: 750,
     height: 500
   },
@@ -566,7 +566,10 @@ RommeCal.prepareData = function (data) {
   this.updatePlayers(this.players.init);
 };
 
-RommeCal.init = function (filename) {
+RommeCal.init = function (selector) {
+  this.svg.selector = selector;
+
+  const filename = d3.select(selector).attr('data-src');
   d3.csv(filename, loadDatum).then(function (data) {
       RommeCal.prepareData(data);
       RommeCal.draw();

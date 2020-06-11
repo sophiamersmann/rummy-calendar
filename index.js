@@ -1,12 +1,10 @@
 import RommeCal from './assets/modules/chart.js';
 
-const FILENAME = 'assets/data/romme.csv';
-
 $(document).ready(function() {
   "use strict";
 
   // draw chart
-  RommeCal.init(FILENAME);
+  RommeCal.init('#chart-container');
 
   // update chart when player selection is updated
   $('.img-player').on('click', function() {

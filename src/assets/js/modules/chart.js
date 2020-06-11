@@ -6,8 +6,7 @@ import {
   maxIndex,
   cumsum
 } from 'd3-array';
-// import * as d3Tip from 'd3-tip';
-// d3.tip = d3Tip;
+import d3Tip from 'd3-tip';
 
 const RommeCal = {
   svg: {
@@ -171,6 +170,7 @@ RommeCal.updateTipData = function() {
   const dataGroup = d3.map(this.active[this.data.getGroupKey[type]], d => d.date);
   let scores = dataGroup.get(this.time.formatDate(date));
 
+  // update active tip data
   if (scores && scores.scores.length > 0) {
     scores = scores.scores;
     this.active.tip.scores = scores;
@@ -378,10 +378,10 @@ RommeCal.gridInteract = function() {
   const formatDate = this.time.formatDate;
 
   // init tooltip
-  // let tip = d3.tip()
-  //   .attr('class', 'cell-tip')
-  //   .html(createTipContent);
-  // this.svg.g.call(tip);
+  let tip = d3Tip()
+    .attr('class', 'cell-tip')
+    .html((date, elem) => createTipContent(date, elem, this.active.tip));
+  this.svg.g.call(tip);
 
   this.svg.g.selectAll('rect')
     .on('mouseover', (date, i, n) => {
@@ -412,21 +412,21 @@ RommeCal.gridInteract = function() {
       }
 
       // show tip and draw chart within tip
-      // this.updateTipData();
-      // tip.show(date, this.active.tip);
-      // if (this.active.tip.scores) {
-      //   tip = tip.attr('class', 'cell-tip cell-tip-large');
-      //   this.drawChartInTip();
-      // }
+      this.updateTipData();
+      tip.show(date, n[i]);
+      if (this.active.tip.scores) {
+        tip = tip.attr('class', 'cell-tip cell-tip-large');
+        this.drawChartInTip();
+      }
     }).on('mouseout', (date, i, n) => {
       const elem = d3.select(n[i]);
       d3.selectAll('rect').filter((_, j) => i != j).attr('fill-opacity', 1);
 
       // hide tip
-      // this.clearTipData();
-      // tip.hide();
-      // tip = tip.attr('class', 'cell-tip');
-      // this.clearChartInTip();
+      this.clearTipData();
+      tip.hide();
+      tip = tip.attr('class', 'cell-tip');
+      this.clearChartInTip();
     });
 };
 
@@ -490,7 +490,6 @@ RommeCal.drawChartInTip = function() {
     .attr('text-anchor', 'end')
     .attr('alignment-baseline', 'middle')
     .attr('fill', d => d === 0 ? 'gray' : 'lightgray')
-    .attr('font-size', '0.6em')
     .text(d => d);
 
   // draw cumulative scores line for each player
@@ -528,7 +527,6 @@ RommeCal.drawChartInTip = function() {
     .attr('y', d => yScale(d.score))
     .attr('alignment-baseline', d => getBaseline(d.rank))
     .attr('fill', d => this.players.colors[d.player])
-    .attr('font-size', '0.7em')
     .attr('font-weight', 'bold')
     .text(d => d.score);
 };
@@ -658,7 +656,7 @@ function filterScores(data, activePlayers) {
   }));
 }
 
-function createTipContent(date, info) {
+function createTipContent(date, elem, info) {
   return `
   <div class="tip-heading">
     <div class="tip-date">${info.prettyDate}</div>

@@ -1,0 +1,36 @@
+.cell-tip {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px lightgray;
+  line-height: 1;
+  padding: 1rem;
+  pointer-events: none;
+  transform: translateY(-12px);
+  width: 250px; }
+  .cell-tip.cell-tip-large {
+    transform: translateY(-110px); }
+  .cell-tip:after {
+    box-sizing: border-box;
+    color: #fff;
+    content: "\25E2";
+    display: inline;
+    font-size: 12px;
+    left: 0;
+    line-height: 1;
+    margin: -1px 0 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    transform: rotate(45deg) translateY(-4px) translateX(-3px);
+    width: 100%; }
+  .cell-tip .tip-heading {
+    text-align: center; }
+  .cell-tip .tip-date {
+    font-size: 1.2em;
+    font-weight: bold; }
+  .cell-tip .tip-games {
+    margin-top: 2px; }
+  .cell-tip .y-axis-grid-ticks,
+  .cell-tip .text-score {
+    font-size: 0.8em; }

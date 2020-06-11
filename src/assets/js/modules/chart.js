@@ -1,9 +1,5 @@
 import * as d3 from 'd3';
-import {
-  rollups,
-  maxIndex,
-  cumsum,
-} from 'd3-array';
+import { rollups, maxIndex, cumsum } from 'd3-array';
 import d3Tip from 'd3-tip';
 
 import playerColors from '../../style/scss/_global.scss';

@@ -150,6 +150,8 @@ html {
     font-size: 2em; }
   html h3 {
     font-size: 1.4em; }
+  html p {
+    font-size: 1.1em; }
   html a:not([class]) {
     color: #336699;
     text-decoration: none; }

@@ -1,3 +1,8 @@
+:export {
+  sophia: gold;
+  clara: #ff9f1c;
+  marina: #f25f5c; }
+
 .cell-tip {
   background: #fff;
   border-radius: 5px;

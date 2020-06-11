@@ -1,6 +1,11 @@
 html, html body {
   height: 100%; }
 
+:export {
+  sophia: gold;
+  clara: #ff9f1c;
+  marina: #f25f5c; }
+
 /* roboto-regular - latin */
 @font-face {
   font-family: 'Roboto';

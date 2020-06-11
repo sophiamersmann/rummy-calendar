@@ -6,6 +6,8 @@ import {
 } from 'd3-array';
 import d3Tip from 'd3-tip';
 
+import playerColors from '../../style/scss/_global.scss';
+
 function loadDatum(d) {
   return {
     date: d.Date,
@@ -144,11 +146,6 @@ const RommeCal = {
   players: {
     all: ['sophia', 'clara', 'marina'],
     init: ['sophia', 'clara'],
-    colors: {
-      sophia: 'gold', // f7cc38
-      clara: '#ff9f1c',
-      marina: '#f25f5c',
-    },
   },
   time: {
     parseDate: d3.timeParse('%d/%m/%y'),
@@ -454,7 +451,7 @@ RommeCal.colorGrid = function colorGrid(transition = true) {
     const type = d3.select(n[i]).attr('data-type');
     const scoresMap = d3.map(this.active[this.data.getGroupKey[type]], (d) => d.date);
     const scores = scoresMap.get(this.time.formatDate(date));
-    return scores ? this.players.colors[getWinner(scores.scores)] : cell.fill;
+    return scores ? playerColors[getWinner(scores.scores)] : cell.fill;
   });
 };
 
@@ -577,7 +574,7 @@ RommeCal.drawChartInTip = function drawChartInTip() {
   svg.selectAll('path')
     .data(cumsumScores)
     .join('path')
-    .attr('stroke', (_, i) => this.players.colors[players[i]])
+    .attr('stroke', (_, i) => playerColors[players[i]])
     .attr('stroke-width', 1)
     .attr('fill', 'none')
     .attr('d', line);
@@ -609,7 +606,7 @@ RommeCal.drawChartInTip = function drawChartInTip() {
     .attr('x', width + 2)
     .attr('y', (d) => yScale(d.score))
     .attr('alignment-baseline', (d) => getBaseline(d.rank))
-    .attr('fill', (d) => this.players.colors[d.player])
+    .attr('fill', (d) => playerColors[d.player])
     .attr('font-weight', 'bold')
     .text((d) => d.score);
 };

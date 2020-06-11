@@ -32,3 +32,9 @@ $large: 1199.98px;
     @content;
   }
 }
+
+:export {
+  sophia: $color-sophia;
+  clara: $color-clara;
+  marina: $color-marina;
+}

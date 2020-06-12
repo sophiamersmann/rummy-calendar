@@ -20,7 +20,7 @@ html {
     @extend %full-height;
     display: flex;
     flex-direction: row;
-    @include extra-small-display(block);
+    @include small-display(block);
   }
 
   .alert {
@@ -31,7 +31,7 @@ html {
     font-size: 1.4em;
     padding: $spacing / 2;
     margin: $spacing 0;
-    @include extra-small-display(block);
+    @include small-display(block);
   }
 
   .main {
@@ -62,13 +62,11 @@ html {
     }
 
     .bottom {
-      @include extra-small-display(none);
+      @include small-display(none);
     }
-    @include max-width($small) {
-      flex-basis: 35%;
-    }
-    @include extra-small-display(block) {
+    @include small-display(block) {
       padding-top: $spacing;
+      flex-basis: 35%;
     }
   }
 
@@ -79,10 +77,10 @@ html {
     h3 {
       margin-bottom: $spacing;
     }
-    @include extra-small-display(none);
+    @include small-display(none);
 
     &+p {
-      @include extra-small-display(none);
+      @include small-display(none);
     }
   }
 

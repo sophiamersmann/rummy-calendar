@@ -9,17 +9,17 @@ function getCurrentPlayers() {
 }
 
 $(document).ready(() => {
-  let isExtraSmall = $(window).width() <= breakpoints.extraSmall;
+  let isSmall = $(window).width() <= breakpoints.small;
 
   // draw chart
-  RommeCal.init('#chart-container', !isExtraSmall);
+  RommeCal.init('#chart-container', !isSmall);
 
   // enable/disable grid interactions on window resize
   $(window).resize(() => {
-    isExtraSmall = $(window).width() <= breakpoints.extraSmall;
-    if (isExtraSmall && RommeCal.grid.interactionsEnabled) {
+    isSmall = $(window).width() <= breakpoints.small;
+    if (isSmall && RommeCal.grid.interactionsEnabled) {
       RommeCal.disableInteractions();
-    } else if (!isExtraSmall && !RommeCal.grid.interactionsEnabled) {
+    } else if (!isSmall && !RommeCal.grid.interactionsEnabled) {
       RommeCal.enableInteractions();
     }
   });

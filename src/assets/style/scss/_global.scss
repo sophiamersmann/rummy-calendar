@@ -26,8 +26,8 @@ $large: 1199.98px;
   }
 }
 
-@mixin extra-small-display($display) {
-  @media screen and (max-width: $extra-small) {
+@mixin small-display($display) {
+  @media screen and (max-width: $small) {
     display: $display;
     @content;
   }

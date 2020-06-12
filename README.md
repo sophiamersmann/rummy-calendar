@@ -1,6 +1,6 @@
-# Rummy @ Home
+# Rummy Calendar
 
-## Build 
+**Build**
 
 ```
 npm install

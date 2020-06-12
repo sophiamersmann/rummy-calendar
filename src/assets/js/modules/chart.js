@@ -115,6 +115,7 @@ const RommeCal = {
   },
   grid: {
     drawn: false,
+    interactionsEnabled: false,
     startDate: new Date(2020, 3, 2),
     endDate: new Date(2020, 7, 2),
     // set from startDate and endDate
@@ -451,7 +452,7 @@ RommeCal.colorGrid = function colorGrid(transition = true) {
   });
 };
 
-RommeCal.gridInteract = function gridInteract() {
+RommeCal.enableInteractions = function enableInteractions() {
   const { formatDate } = this.time;
 
   // init tooltip
@@ -502,6 +503,13 @@ RommeCal.gridInteract = function gridInteract() {
       tip = tip.attr('class', 'cell-tip');
       this.clearChartInTip();
     });
+
+  this.grid.interactionsEnabled = true;
+};
+
+RommeCal.disableInteractions = function disableInteractions() {
+  this.svg.g.selectAll('rect').on('mouseover', null).on('mouseout', null);
+  this.grid.interactionsEnabled = false;
 };
 
 RommeCal.drawChartInTip = function drawChartInTip() {
@@ -611,13 +619,16 @@ RommeCal.clearChartInTip = function clearChartInTip() {
   d3.select(this.chartInTip.selector).selectAll('*').remove();
 };
 
-RommeCal.draw = function draw() {
+RommeCal.draw = function draw(interactions = true) {
   this.setUpSVG();
 
   this.drawGrid();
   this.colorGrid(false);
   this.drawMonthLines();
-  this.gridInteract();
+
+  if (interactions) {
+    this.enableInteractions();
+  }
 
   this.drawLabels();
 };
@@ -649,12 +660,12 @@ RommeCal.prepareData = function prepareData(data) {
   this.updatePlayers(this.players.init);
 };
 
-RommeCal.init = function init(selector) {
+RommeCal.init = function init(selector, interactions = true) {
   this.svg.selector = selector;
 
   const filename = d3.select(selector).attr('data-src');
   d3.csv(filename, loadDatum).then((data) => {
     RommeCal.prepareData(data);
-    RommeCal.draw();
+    RommeCal.draw(interactions);
   });
 };

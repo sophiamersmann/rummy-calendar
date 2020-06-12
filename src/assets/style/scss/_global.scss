@@ -33,8 +33,21 @@ $large: 1199.98px;
   }
 }
 
+// Remove the unit of a length
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
 :export {
   sophia: $color-sophia;
   clara: $color-clara;
   marina: $color-marina;
+
+  extraSmall: strip-unit($extra-small);
+  small: strip-unit($small);
+  medium: strip-unit($medium);
+  large: strip-unit($large);
 }

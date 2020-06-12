@@ -1,7 +1,11 @@
 :export {
   sophia: gold;
   clara: #ff9f1c;
-  marina: #f25f5c; }
+  marina: #f25f5c;
+  extraSmall: 575.98;
+  small: 767.98;
+  medium: 991.98;
+  large: 1199.98; }
 
 .cell-tip {
   background: #fff;

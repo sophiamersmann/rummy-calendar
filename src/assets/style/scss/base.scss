@@ -4,6 +4,9 @@
 html {
   @extend %full-height;
   box-sizing: border-box;
+  color: $black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
 
   *,
   *:after,
@@ -12,9 +15,6 @@ html {
     margin: 0;
     padding: 0;
   }
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  color: $black;
 
   body {
     @extend %full-height;
@@ -25,12 +25,12 @@ html {
 
   .alert {
     display: none;
+    margin: $spacing 0;
+    padding: $spacing / 2;
     border: 2px solid $blue;
     border-radius: 10px;
     background-color: $light-blue;
     font-size: 1.2em;
-    padding: $spacing / 2;
-    margin: $spacing 0;
     @include small-display(block);
   }
 
@@ -42,11 +42,11 @@ html {
   }
 
   .panel {
-    flex: 1 4 25%;
     display: flex;
+    flex: 1 4 25%;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: $spacing * 2 $spacing $spacing / 2;
     background-color: whitesmoke;
     box-shadow: 2px 2px 5px lightgray;
@@ -56,8 +56,8 @@ html {
       margin-top: $spacing / 2;
 
       &:first-of-type {
-        font-size: 1.4em;
         color: $gray;
+        font-size: 1.4em;
       }
     }
 
@@ -65,8 +65,8 @@ html {
       @include small-display(none);
     }
     @include small-display(block) {
-      padding-top: $spacing;
       flex-basis: 35%;
+      padding-top: $spacing;
     }
   }
 
@@ -92,9 +92,9 @@ html {
 
     figcaption {
       margin-top: $spacing / 6;
+      color: $gray;
       font-family: 'Roboto Mono', monospace;
       font-size: 100%;
-      color: $gray;
       letter-spacing: 0.5px;
       @include max-width($small) {
         font-size: 80%;
@@ -105,8 +105,8 @@ html {
     .img-player {
       width: 60%;
       height: auto;
-      border-radius: 50%;
       padding: 2px;
+      border-radius: 50%;
       @include max-width($small) {
         width: 80%;
       }

@@ -40,8 +40,8 @@
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
 
 #chart-container {
-  align-items: center;
   display: flex;
+  align-items: center;
   height: 100%;
   margin: 8rem; }
   @media screen and (max-width: 767.98px) {

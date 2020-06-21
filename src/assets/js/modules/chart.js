@@ -95,7 +95,7 @@ const RommeCal = {
     top: 60,
     right: 40,
     bottom: 40,
-    left: 60,
+    left: 70,
   },
   // set after loading data
   data: {
@@ -412,7 +412,7 @@ RommeCal.drawLabels = function drawLabels() {
         text: 'Month',
         y: 9.5,
       }, {
-        text: 'All',
+        text: 'Overall',
         y: 11,
       }])
       .join('text')

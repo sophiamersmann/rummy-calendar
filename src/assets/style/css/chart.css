@@ -40,16 +40,11 @@
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
 
 #chart-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin: 8rem; }
+  width: 90%;
+  max-width: 800px; }
   @media screen and (max-width: 767.98px) {
     #chart-container {
-      margin: 2rem; } }
-  @media screen and (max-width: 575.98px) {
-    #chart-container {
-      margin: 1rem; } }
+      margin: 1rem auto; } }
   #chart-container svg {
     display: block;
     width: 95%;

@@ -2,15 +2,10 @@
 @import 'typo';
 
 #chart-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin: $spacing * 4;
+  width: 90%;
+  max-width: 800px;
   @include max-width($small) {
-    margin: $spacing;
-  }
-  @include max-width($extra-small) {
-    margin: $spacing / 2;
+    margin: $spacing / 2 auto;
   }
 
   svg {
